@@ -7480,3 +7480,136 @@ test_cases:
             eflags: [ X86_EFLAGS_TEST_ZF, X86_EFLAGS_TEST_CF ]
           regs_read: [ rflags ]
           regs_write: [ al ]
+  -
+    input:
+      bytes: [ 0xd9, 0x1d, 0x00, 0x00, 0x00, 0x00 ]
+      arch: "x86"
+      options: [ CS_OPT_DETAIL, CS_MODE_64 ]
+      address: 0x0
+    expected:
+      insns:
+      -
+        asm_text: "fstp dword ptr [rip]"
+        details:
+          x86:
+            operands:
+              -
+                type: X86_OP_MEM
+                mem_base: rip
+                size: 4
+                access: CS_AC_WRITE
+          regs_read: [ rip ]
+  -
+    input:
+      bytes: [ 0xdd, 0x1d, 0x00, 0x00, 0x00, 0x00 ]
+      arch: "x86"
+      options: [ CS_OPT_DETAIL, CS_MODE_64 ]
+      address: 0x0
+    expected:
+      insns:
+      -
+        asm_text: "fstp qword ptr [rip]"
+        details:
+          x86:
+            operands:
+              -
+                type: X86_OP_MEM
+                mem_base: rip
+                size: 8
+                access: CS_AC_WRITE
+          regs_read: [ rip ]
+  -
+    input:
+      bytes: [ 0xd9, 0x15, 0x00, 0x00, 0x00, 0x00 ]
+      arch: "x86"
+      options: [ CS_OPT_DETAIL, CS_MODE_64 ]
+      address: 0x0
+    expected:
+      insns:
+      -
+        asm_text: "fst dword ptr [rip]"
+        details:
+          x86:
+            operands:
+              -
+                type: X86_OP_MEM
+                mem_base: rip
+                size: 4
+                access: CS_AC_WRITE
+          regs_read: [ rip ]
+  -
+    input:
+      bytes: [ 0xdd, 0x15, 0x00, 0x00, 0x00, 0x00 ]
+      arch: "x86"
+      options: [ CS_OPT_DETAIL, CS_MODE_64 ]
+      address: 0x0
+    expected:
+      insns:
+      -
+        asm_text: "fst qword ptr [rip]"
+        details:
+          x86:
+            operands:
+              -
+                type: X86_OP_MEM
+                mem_base: rip
+                size: 8
+                access: CS_AC_WRITE
+          regs_read: [ rip ]
+  -
+    input:
+      bytes: [ 0xdb, 0x15, 0x00, 0x00, 0x00, 0x00 ]
+      arch: "x86"
+      options: [ CS_OPT_DETAIL, CS_MODE_64 ]
+      address: 0x0
+    expected:
+      insns:
+      -
+        asm_text: "fist dword ptr [rip]"
+        details:
+          x86:
+            operands:
+              -
+                type: X86_OP_MEM
+                mem_base: rip
+                size: 4
+                access: CS_AC_WRITE
+          regs_read: [ rip ]
+  -
+    input:
+      bytes: [ 0xdb, 0x1d, 0x00, 0x00, 0x00, 0x00 ]
+      arch: "x86"
+      options: [ CS_OPT_DETAIL, CS_MODE_64 ]
+      address: 0x0
+    expected:
+      insns:
+      -
+        asm_text: "fistp dword ptr [rip]"
+        details:
+          x86:
+            operands:
+              -
+                type: X86_OP_MEM
+                mem_base: rip
+                size: 4
+                access: CS_AC_WRITE
+          regs_read: [ rip ]
+  -
+    input:
+      bytes: [ 0xd9, 0x3d, 0x00, 0x00, 0x00, 0x00 ]
+      arch: "x86"
+      options: [ CS_OPT_DETAIL, CS_MODE_64 ]
+      address: 0x0
+    expected:
+      insns:
+      -
+        asm_text: "fnstcw word ptr [rip]"
+        details:
+          x86:
+            operands:
+              -
+                type: X86_OP_MEM
+                mem_base: rip
+                size: 2
+                access: CS_AC_WRITE
+          regs_read: [ rip ]
